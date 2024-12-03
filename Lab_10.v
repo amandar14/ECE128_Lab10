@@ -25,23 +25,23 @@ module Lab_10(input clk, reset,
                 output [7:0] result);
     
     //CU wires
-    wire w_rf;
-    wire [2:0] rom_adr, st_out, w_ram;
+    wire w_rf,w_ram;
+    wire [2:0] rom_adr, st_out;
     wire DA, SA, SB;
     
     //ROM wires
-    wire data_rom;
+    wire [3:0] data_ROM;
     
     //RF wires
     wire [3:0] A, B;
     
     //multiplier wires
     wire [7:0] product;
-                
+            
     cu uut0(clk, reset, addr1_ROM, addr2_ROM, w_rf, rom_adr, DA, SA, SB, st_out, w_ram);
     ROM uut1(rom_adr, data_ROM);
     RF uut2(A, B, SA, SB, data_ROM, DA, w_rf, reset, clk);
-    comb_mult uut3(a, b, product);
+    comb_mult uut3(A, B, product);
     RAM uut4(clk, reset, w_ram, addr_RAM, product, result);
 endmodule
 

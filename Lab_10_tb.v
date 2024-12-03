@@ -37,6 +37,13 @@ module Lab_10_tb( );
         addr_RAM = 1;
         #10 
         reset = 0;
+        #30
+        reset=1;
+        addr1_ROM = 4;
+        addr2_ROM = 5;
+        addr_RAM = 5;
+        #10 reset=0;
+      
     end
 endmodule
 
@@ -83,7 +90,7 @@ module CU_tb();
     wire [2:0] adr;
     wire DA,SA,SB;
     wire [2:0] st_out;
-    wire [2:0] w_ram;
+    wire w_ram;
     
     cu uut2(clk, reset, adr1, adr2, w_rf, adr, DA, SA, SB, st_out, w_ram);
     
